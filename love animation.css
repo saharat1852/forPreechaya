@@ -1,0 +1,90 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc568;
+  font-size: 62.5%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media screen and (max-width: 520px) {
+}
+
+.container {
+  width: 50rem;
+  height: 20rem;
+  position: relative;
+}
+
+.svg-container {
+  z-index: 2;
+  position: absolute;
+}
+
+.mo-container {
+  width: 100%;
+  height: 100%;
+}
+
+.line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+
+.lttr {
+  fill: #763c8c;
+}
+
+.sound {
+  position: fixed;
+  color: #763c8c;
+  font-size: 1.6rem;
+  bottom: 1rem;
+  right: 1rem;
+  text-decoration: underline;
+  cursor: default;
+}
+.sound--off {
+  text-decoration: line-through;
+}
+
+/* ==========================================
+   ส่วนที่เพิ่มใหม่: จัดการรูปภาพดอกไม้หลังผ่านไป 10 วิ
+   ========================================== */
+.flower-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* จัดให้อยู่กึ่งกลางหน้าจอ */
+  z-index: 10; /* ให้อยู่ด้านหน้าสุด */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1.5s ease-in-out; /* อนิเมชั่นตอนค่อยๆ ปรากฏขึ้นมา */
+  pointer-events: none; /* ป้องกันไม่ให้บังการกดปุ่มเปิด-ปิดเสียง */
+}
+
+/* คลาสที่จะถูกเรียกใช้ผ่าน JavaScript หลังจากครบ 10 วินาที */
+.flower-container.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1); /* ขยายขนาดขึ้นมาเล็กน้อยตอนแสดงผล */
+}
+
+.flower-img {
+  max-width: 550px; /* สามารถปรับขนาดความกว้างของรูปดอกไม้ตรงนี้ได้ตามต้องการ */
+  height: auto;
+  border-radius: 20px; /* ทำมุมโค้งมนให้รูปภาพดูละมุนขึ้น */
+  box-shadow: 0 15px 35px rgba(254, 72, 67, 0.2); /* เพิ่มเงาสีชมพูเรืองๆ อ่อนๆ */
+}
